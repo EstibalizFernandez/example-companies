@@ -30,8 +30,21 @@ module.exports.doCreate = (req, res, next) => {
         .catch(error => {
             console.error(error);
             if (error instanceof mongoose.Error.ValidationError) {
-                res.render('/companies/form', {company, error:error.errors});
+                res.render('companies/form', {company: company, errors: error.errors});
             }
         })
+
+}
+
+module.exports.doDelete = (req, res, next) => {
+    let id = req.params.id;
+    Company.findByIdAndRemove(id)
+    .then(()=> {
+        res.redirect('/companies');
+        console.info('mu bien borrao');
+    })
+    .catch(error => {
+        console.error('pos no sa borrao');
+    })
 
 }

@@ -6,5 +6,5 @@ router.get('/', companyController.list);
 
 router.get('/create', companyController.create);
 router.post('/create', companyController.doCreate);
-
+router.post('/:id/delete', companyController.doDelete);
 module.exports = router;    
