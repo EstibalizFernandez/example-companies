@@ -1,4 +1,5 @@
 const PORT = 3000;
+const bodyParser = require('body-parser');
 const companyRouter = require(`./routes/companies.routes`);
 
 const express = require('express');
@@ -14,7 +15,9 @@ app.set('view engine', 'hbs');
 require('./configs/db.config.js');
 require('./configs/hbs.config.js');
 
-app.use("/companies",companyRouter)
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser())
+app.use("/companies",companyRouter);
 
 
 
