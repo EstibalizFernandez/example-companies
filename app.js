@@ -11,6 +11,8 @@ const logger = require('morgan');
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 require('./configs/db.config.js');
 require('./configs/hbs.config.js');

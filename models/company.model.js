@@ -10,7 +10,7 @@ module.exports = mongoose.model("Company", new mongoose.Schema({
     },
     code:{
         type:String,
-        required:"inserta inserta",
+        required:"inserta er código",
         unique:true
     },
     image:{
