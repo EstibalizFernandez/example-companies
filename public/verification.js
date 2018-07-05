@@ -20,8 +20,8 @@ function renderErrors (JSONerrors) {
 
 window.onload = () => {
     document.querySelectorAll("form[data-errors]").forEach((formItems) => {
-        if (formItems.dataset.parseJSON.length > 0) {
-            renderErrors(formItems.dataset.parseJSON);
+        if (formItems.dataset.errors.length > 0) {
+            renderErrors(formItems.dataset.errors);
         }
     })
 };

@@ -13,6 +13,26 @@ module.exports.list = (req, res, next) => {
         })
 }
 
+module.exports.getDetails = (req, res, next) => {
+    const companyCode = req.params.code;
+    console.log(req.params);
+    Company.findOne({code: companyCode})
+        .then ( company => {
+           /*  if (company) {
+
+            } */
+            console.log(company);
+            res.render('companies/detail.hbs', {
+                company
+            })
+        })
+        .catch(error => {
+            console.error('Erró', error)
+        })
+
+
+}
+
 module.exports.create = (req,res,next) => {
     res.render("companies/form", {
         company: new Company()
