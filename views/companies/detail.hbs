@@ -2,4 +2,12 @@
 
     {{> companies/companiesPartial company}}
 
+    <p>Comments</p>
+    {{#each comments as |cm|}}
+        {{> comments/commentsPartial comments=company.comments }}
+    {{/each}}
+    <hr>
+
+    {{> comments/commentsForm }}
+
 {{/if}}

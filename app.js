@@ -22,5 +22,4 @@ app.use(cookieParser())
 app.use("/companies",companyRouter);
 
 
-
 app.listen(PORT, console.info('All right!'));

@@ -24,7 +24,8 @@ module.exports = mongoose.model("Company", new mongoose.Schema({
     },
     description:{
         type: String
-    }
+    },
+    allComments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 
 }))
 
