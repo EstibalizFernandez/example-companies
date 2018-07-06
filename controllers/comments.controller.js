@@ -15,11 +15,15 @@ module.exports.doCreate = (req, res, next) => {
             });
 
             comment.save()
+                //siempre tiene que haber un then y un catch o puede saltar al catch de fuera?
                 .then(() => {
                     company.allComments.push(comment);
-
                     return company.save();
-                }) 
+                })
+                .then(()=> {
+                    //it will be easier if we can change the route to /id
+                    res.redirect(`/companies/${id}`)
+                })
         })
         .catch(error => console.error('Un mohón pa ti: ' + error))
 }

@@ -1,1 +1,4 @@
-{{this.text}}
+{{#each comments as |cm| }}
+    This is a test
+    <p>{{ cm.text }}</p>
+{{/each}}

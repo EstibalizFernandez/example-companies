@@ -1,6 +1,7 @@
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const companyRouter = require(`./routes/companies.routes`);
+const commentsRouter = require('./routes/comments.routes');
 
 const express = require('express');
 const path = require('path');
@@ -20,6 +21,8 @@ require('./configs/hbs.config.js');
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use("/companies",companyRouter);
+app.use('/comments', commentsRouter);
+
 
 
 app.listen(PORT, console.info('All right!'));

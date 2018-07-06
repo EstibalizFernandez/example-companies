@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Company = require('../models/company.model.js');
+const Comment = require('../models/comments.model.js');
 
 module.exports.list = (req, res, next) => {
     Company.find()
@@ -14,13 +15,24 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.getDetails = (req, res, next) => {
-    const companyCode = req.params.code;
-    console.log(req.params);
+    const id = req.params.id;
+    //he cambiado esto a id porque luego el id se usa en los comments y otros sitios y nos va a costar mucho mas
+    Company.findById(id)
+    .populate('comments')
+    .then ( company => {
+        console.log(company);
+        res.render('companies/detail.hbs', {
+            company,
+            comment: new Comment()
+        })
+    })
+    .catch(error => {
+        console.error('Erró', error)
+    })
+/*     const companyCode = req.params.code;
     Company.findOne({code: companyCode})
         .then ( company => {
-           /*  if (company) {
-
-            } */
+         
             console.log(company);
             res.render('companies/detail.hbs', {
                 company
@@ -28,7 +40,7 @@ module.exports.getDetails = (req, res, next) => {
         })
         .catch(error => {
             console.error('Erró', error)
-        })
+        }) */
 
 
 }
