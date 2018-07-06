@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Company = require('../models/company.model.js');
+//add comments model so we can populate
 const Comment = require('../models/comments.model.js');
 
 module.exports.list = (req, res, next) => {
@@ -18,7 +19,7 @@ module.exports.getDetails = (req, res, next) => {
     const id = req.params.id;
     //he cambiado esto a id porque luego el id se usa en los comments y otros sitios y nos va a costar mucho mas
     Company.findById(id)
-    .populate('comments')
+    .populate('allComments')
     .then ( company => {
         console.log(company);
         res.render('companies/detail.hbs', {
